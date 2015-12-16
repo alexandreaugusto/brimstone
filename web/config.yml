@@ -1,0 +1,3 @@
+fields:
+    endereco: text
+    website: url

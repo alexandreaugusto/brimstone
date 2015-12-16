@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="Sistema Generic Register">
+
+        <title>Register - Generic Register</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="{{ app.request.basepath }}/css/signin.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="container">
+
+			{% if is_granted('ROLE_USER') %}
+        	<a href="{{ path('admin_logout') }}" title="Fa&ccedil;a o logout do sistema">Logout ({{ app.security.token.user.username }})</a>
+        	{% endif %}
+
+            <form class="form-signin" action="#" method="post">
+            	{% if header %}
+                <h2 class="form-signin-heading">{{ header }}</h2>
+                {% else %}
+                <h2 class="form-signin-heading">Registre-se!</h2>
+                {% endif %}
+                {{ form_widget(form) }}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Registrar</button>
+                {% if msg %}
+                <div class="alert alert-success" role="alert">{{ msg }}</div>
+                {% endif %}
+            </form>
+
+        </div> <!-- /container -->
+        <script src="//code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            /*$( ".form-signin" ).submit(function( event ) {
+                $( "#inputUser" ).val( $( "#inputUser" ).val().trim() + "@cptec.inpe.br" );
+                //event.preventDefault();
+            });*/
+        </script>
+    </body>
+</html>

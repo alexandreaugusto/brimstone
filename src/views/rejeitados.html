@@ -1,0 +1,31 @@
+            {% if estacoes|length > 0 %}
+            <table id="rejeitados" class="table table-bordered table-hover">
+                <thead>
+                    <tr class="line-header">
+                        <th>C&oacute;digo</th>
+                        <th>Nome</th>
+                        <th>Munic&iacute;pio/UF</th>
+                        <th>{{ dado|capitalize }}</th>
+                        <th>Data</th>
+                        <th>Autor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for estacao in estacoes %}
+                    <tr>
+                        <td>{{ estacao.codigo }}</td>
+                        <td>{{ estacao.estacao }}</td>
+                        <td>{{ estacao.municipio }}/{{ estacao.uf }}</td>
+                        <td>{{ estacao[dado] }}</td>
+                        <td>{{ estacao.data }}</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6" class="text-center">Total: {{ estacoes|length }} registro(s)</td>
+                    </tr>
+                </tfoot>
+            </table>
+            {% endif %}
